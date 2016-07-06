@@ -1,3 +1,14 @@
+###################################################################################
+## The Source file contains mainly two functions to cache the inverse of matrix   #
+## The function only calcultes the inverse if it is not previously cached         #
+##                                                                		  #
+## "makeCacheMatrix" Function have setters and getters to initaize the function   #
+##                                                                                #
+## "cacheSolve" Function caches the inverse of a matrix if it it is net already   #
+## cached by calculating and updates if cache if any have changes made.           #
+##                                                                                #
+###################################################################################
+
 # Create a matrix object which gets and sets as martrix as well as inverse
 makeCacheMatrix <- function(mat = matrix()) {
   
@@ -23,25 +34,25 @@ makeCacheMatrix <- function(mat = matrix()) {
 }
 
 cacheSolve <- function(mat=matrix(), ...) {
-	# Retrive the inverse
+    # Retrive the inverse
     inv <- mat$getmatrix()
 	
-	# Check if inverse is cached if cached return inverse and end function
+    # Check if inverse is cached if cached return inverse and end function
     if(!is.null(inv)){
       message("####### Get Inverse from Cache #######")
       return(inv)
     }
 	
-	# If inverse is not cached get the martix
+    # If inverse is not cached get the martix
     matrix <- mat$get()
 	
-	# Calculate the inverse
+    # Calculate the inverse
     inv <- solve(matrix, ...)
 	
-	# Cache the inverse
+    # Cache the inverse
     mat$setmatrix(inv)
 	
-	# Dispaly Inverse
+    # Dispaly Inverse
     inv
 }
 
